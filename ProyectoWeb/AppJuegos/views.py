@@ -1,20 +1,39 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Juegos
+from .models import *
 
 # Create your views here.
 
-def agregarJuego(request):
+def inicio(request):
     
-    juego1= Juegos(nombre="Resident Evil 4",genero="Accion-aventura",anio=2005)
+    return render(request,"AppJuegos/inicio.html")
+
+def agregarJuegoPS4(request):
+    
+    juego1= JuegosPS4(nombre="Resident Evil 4",genero="Accion-aventura",anio=2005)
     juego1.save()
     
     return HttpResponse("Se agrego un juego")
     
-def verJuego(request):
+def verJuegosPS4(request):
     
-    misJuegos = Juegos.objects.all() #obtengo todos los datos en mi tabla Juegos
+    juegosPS4 = JuegosPS4.objects.all() #obtengo todos los datos en mi tabla Juegos
     
-    info = {"juegos":misJuegos}
+    info = {"juegos":juegosPS4}
         
-    return render(request,"juegos.html",info) 
+    return render(request,"AppJuegos/juegosPS4.html",info) 
+
+def agregarJuegoPS5(request):
+    
+    juego1= JuegosPS5(nombre="Spider-Man 2",genero="Acción-aventura",anio=2023)
+    juego1.save()
+    
+    return HttpResponse("Se agrego un juego")
+    
+def verJuegosPS5(request):
+    
+    juegosPS5 = JuegosPS5.objects.all() #obtengo todos los datos en mi tabla Juegos
+    
+    info = {"juegos":juegosPS5}
+        
+    return render(request,"AppJuegos/juegosPS5.html",info) 
