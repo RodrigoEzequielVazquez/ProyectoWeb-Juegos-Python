@@ -21,7 +21,7 @@ def verJuegosPS4(request):
     
     info = {"juegos":juegosPS4}
         
-    return render(request,"AppJuegos/juegosPS4.html",info) 
+    return render(request,"AppJuegos/verJuegosPS4.html",info) 
 
 def agregarJuegoPS5(request):
     
@@ -36,4 +36,4 @@ def verJuegosPS5(request):
     
     info = {"juegos":juegosPS5}
         
-    return render(request,"AppJuegos/juegosPS5.html",info) 
+    return render(request,"AppJuegos/verJuegosPS5.html",info) 

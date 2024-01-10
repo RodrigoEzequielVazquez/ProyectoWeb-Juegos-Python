@@ -19,9 +19,10 @@ from django.urls import path
 from AppJuegos.views import *
 
 urlpatterns = [
-    path("",inicio),
-    path("juegosPS4/",verJuegosPS4),
-    path("agregarJuegosPS4/",agregarJuegoPS4),
-    path("juegosPS5/",verJuegosPS5),
-    path("agregarJuegosPS5/",agregarJuegoPS5),
+    path("",inicio, name="Inicio"),
+    path("verJuegosPS4",verJuegosPS4, name="verJuegosPS4"),
+    path("agregarJuegosPS4",agregarJuegoPS4, name="agregarJuegosPS4"),
+    path("verJuegosPS5",verJuegosPS5, name="verJuegosPS5"),
+    path("agregarJuegosPS5",agregarJuegoPS5, name="agregarJuegosPS5"),
+   
 ]

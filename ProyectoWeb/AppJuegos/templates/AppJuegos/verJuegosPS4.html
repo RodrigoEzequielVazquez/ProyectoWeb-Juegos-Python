@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juegos PS5</title>
+    <title>Juegos PS4</title>
 </head>
 <body>
 
-    <h1>Aca se ven los juegos de PS5</h1>
+{%extends "AppJuegos/padre.html"%}
+{%load static%}
+{%block contenidoQueCambia %}
+       
+    <h1>Aca se ven los juegos de PS4</h1>
 
     {% for x in juegos %}
         <p>{{x.nombre}}</p>
@@ -15,6 +19,8 @@
         <p>{{x.anio}}</p>
         <br>
     {% endfor %}    
+{%endblock%}
+
     
 </body>
 </html>
