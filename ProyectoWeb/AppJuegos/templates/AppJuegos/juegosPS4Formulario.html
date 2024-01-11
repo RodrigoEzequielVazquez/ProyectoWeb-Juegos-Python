@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario - Agregar Juego PS4</title>
+</head>
+<body>
+<!-- formulario con html
+    <form action="/AppJuegos/juegosPS4Formulario" method="POST">{% csrf_token %}
+
+        <p>Nombre del juego: <input type="text" name="nombre">  </p>
+
+        <p>Genero: <input type="text" name="genero">  </p>
+
+        <p>Año de lanzamiento: <input type="number" name="anio">  </p>
+
+        <input type="submit" value="enviar">
+
+    </form> -->
+
+    {% if miFormulario.errors %}
+
+    <p style="color: red;"> Estan mal los datos, revisar</p>
+
+    {% endif %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <table>
+
+            {{miFormulario.as_table}}
+        </table>
+
+        <input type="submit", value="enviar">
+    </form>
+    
+</body>
+</html>

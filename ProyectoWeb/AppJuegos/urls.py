@@ -24,5 +24,10 @@ urlpatterns = [
     path("agregarJuegosPS4",agregarJuegoPS4, name="agregarJuegosPS4"),
     path("verJuegosPS5",verJuegosPS5, name="verJuegosPS5"),
     path("agregarJuegosPS5",agregarJuegoPS5, name="agregarJuegosPS5"),
+    path("juegosPS4Formulario",juegosPS4Formulario, name="juegosPS4Formulario"),
+    
+    path("busquedaJuegosPS4",busquedaJuegosPS4, name="busquedaJuegosPS4"),
+    
+    path("buscar/",buscar),
    
 ]

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
+from .forms import *
 
 # Create your views here.
 
@@ -37,3 +38,37 @@ def verJuegosPS5(request):
     info = {"juegos":juegosPS5}
         
     return render(request,"AppJuegos/verJuegosPS5.html",info) 
+
+def juegosPS4Formulario(request):
+    
+    if request.method == "POST":
+        
+        juego = JuegosPS4(nombre= request.POST["nombre"],genero= request.POST["genero"], anio= request.POST["anio"])
+        
+        juego.save()
+        
+        return render(request,"AppJuegos/inicio.html")
+    
+    else:
+        
+        miFormulario = JuegosPS4Formulario()
+    
+    return render(request,"AppJuegos/juegosPS4Formulario.html",{"miFormulario":miFormulario})
+
+def busquedaJuegosPS4(request):
+    return render(request,"AppJuegos/busquedaJuegosPS4.html")
+
+def buscar(request):
+    
+    if request.GET["nombre"]:
+        
+        juego = request.GET["nombre"]
+        juegosPS4 = JuegosPS4.objects.filter(nombre__icontains=juego)
+        
+        return render(request,"AppJuegos/resultadosBusquedaJuegosPS4.html",{"juegos":juegosPS4,"nombre":juego})
+        
+    else:
+        
+       respuesta = "No enviaste datos"
+    
+    return HttpResponse(respuesta)

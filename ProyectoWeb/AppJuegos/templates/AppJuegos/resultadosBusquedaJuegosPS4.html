@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de la busqueda de juegos de PS4 por titulo</title>
+</head>
+<body>
+
+    <p>Estamos buscando el juego: {{nombre}}</p>
+
+    {% if juegos %}
+
+    <ul>
+    {% for juego in juegos%}
+        <li> {{juego.nombre}}</li>
+        <li> {{juego.genero}}</li>
+        <li> {{juego.anio}}</li>
+    {% endfor %}
+    </ul>
+
+    {% endif %}
+    
+    
+</body>
+</html>
