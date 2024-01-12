@@ -14,7 +14,7 @@
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'AppJuegos/css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static '/AppJuegos/css/styles.css' %}" rel="stylesheet" />
     </head>
     <body>
         <!-- Navigation-->
@@ -23,7 +23,7 @@
                 <a class="navbar-brand" href="{% url 'Inicio' %}">Inicios</a>
                 <a class="navbar-brand" href="{% url 'verJuegosPS4' %}">Juegos PS4</a>
                 <a class="navbar-brand" href="{% url 'verJuegosPS5' %}">Juegos PS5</a>
-                <a class="navbar-brand" href="#!">Estudios</a>
+                <a class="navbar-brand" href="{% url 'verEstudios' %}">Estudios</a>
                 <a class="btn btn-primary" href="#signup">Sign Up</a>
             </div>
         </nav>

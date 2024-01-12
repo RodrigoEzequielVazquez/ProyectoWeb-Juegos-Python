@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juegos PS4</title>
 </head>
+
 <body>
 
-{%extends "AppJuegos/padre.html"%}
-{%load static%}
-{%block contenidoQueCambia %}
-       
-    <h1>Aca se ven los juegos de PS4</h1>
+    {%extends "AppJuegos/padre.html"%}
+    {%load static%}
+    {%block contenidoQueCambia %}
 
-    {% for x in juegos %}
+    <section class="contenedorCambiante">
+
+        <h1>Aca se ven los juegos de PS4</h1>
+
+        {% for x in juegos %}
         <p>{{x.nombre}}</p>
         <p>{{x.genero}}</p>
         <p>{{x.anio}}</p>
         <br>
-    {% endfor %}    
-{%endblock%}
+        {% endfor %}
+    </section>
+    {%endblock%}
 
-    
+
 </body>
+
 </html>

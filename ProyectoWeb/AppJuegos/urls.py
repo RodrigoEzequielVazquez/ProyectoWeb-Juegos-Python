@@ -20,14 +20,37 @@ from AppJuegos.views import *
 
 urlpatterns = [
     path("",inicio, name="Inicio"),
+    
+    # Juegos PS4
+    
     path("verJuegosPS4",verJuegosPS4, name="verJuegosPS4"),
+    
     path("agregarJuegosPS4",agregarJuegoPS4, name="agregarJuegosPS4"),
-    path("verJuegosPS5",verJuegosPS5, name="verJuegosPS5"),
-    path("agregarJuegosPS5",agregarJuegoPS5, name="agregarJuegosPS5"),
+    
     path("juegosPS4Formulario",juegosPS4Formulario, name="juegosPS4Formulario"),
     
     path("busquedaJuegosPS4",busquedaJuegosPS4, name="busquedaJuegosPS4"),
     
-    path("buscar/",buscar),
+    path("buscarPS4/",buscarPS4),
+    
+    # Juegos PS5
+    
+    path("verJuegosPS5",verJuegosPS5, name="verJuegosPS5"),
+    
+    path("agregarJuegosPS5",agregarJuegoPS5, name="agregarJuegosPS5"),
+    
+    path("juegosPS5Formulario",juegosPS5Formulario, name="juegosPS5Formulario"),
+    
+    path("busquedaJuegosPS5",busquedaJuegosPS5, name="busquedaJuegosPS5"),
+    
+    path("buscarPS5/",buscarPS5),
+    
+    # Estudios
+    
+    path("agregarEstudios",agregarEstudios, name="agregarEstudios"),
+    
+    path("verEstudios",verEstudios, name="verEstudios"),
+    
+    path("estudiosFormulario",estudiosFormulario, name="estudiosFormulario"),
    
 ]
