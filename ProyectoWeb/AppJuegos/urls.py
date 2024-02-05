@@ -21,17 +21,25 @@ from AppJuegos.views import *
 urlpatterns = [
     path("",inicio, name="Inicio"),
     
+    path("about",about,name="about"),
+    
     # Juegos PS4
     
     path("verJuegosPS4",verJuegosPS4, name="verJuegosPS4"),
     
     path("agregarJuegosPS4",agregarJuegoPS4, name="agregarJuegosPS4"),
     
+    #agregar Juegos con formularios 
+    
     path("juegosPS4Formulario",juegosPS4Formulario, name="juegosPS4Formulario"),
     
     path("busquedaJuegosPS4",busquedaJuegosPS4, name="busquedaJuegosPS4"),
     
-    path("buscarPS4/",buscarPS4),
+    path("buscarPS4",buscarPS4),
+    
+    path("actualizarJuegosPS4Formulario/<juegoNombre>",actualizarJuegosPS4Formulario, name="actualizarJuegosPS4Formulario"),
+    
+    path("eliminarJuegoPS4/<juegoNombre>",eliminarJuegoPS4, name="eliminarJuegoPS4"),
     
     # Juegos PS5
     
@@ -52,5 +60,31 @@ urlpatterns = [
     path("verEstudios",verEstudios, name="verEstudios"),
     
     path("estudiosFormulario",estudiosFormulario, name="estudiosFormulario"),
+    
+    path("listaDeEstudios/",ListaEstudios.as_view(),name="listaDeEstudios"),
+    
+    path("crearEstudios/",CrearEstudios.as_view(),name="crearEstudios"),
+    
+    path("actualizarEstudio/<int:pk>",ActualizarEstudio.as_view(),name="actualizarEstudio"),
+    
+    path("eliminarEstudio/<int:pk>",EliminarEstudio.as_view(),name="eliminarEstudio"),
+    
+    # Login
+    
+    path("login",loginRequest,name="login"),
+    
+    #Registro
+    
+    path("register",register,name="register"),
+    
+    # Logout
+    
+    path("logout",cerrarSesion,name="logout"),
+    
+    # Editar perfil
+    
+    path("editarPerfil",editarPerfil,name="editarPerfil"),
+    
+    path("agregarAvatar",agregarAvatar,name="agregarAvatar")
    
 ]

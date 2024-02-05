@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudios de desarrollo</title>
+</head>
+
+<body>
+
+    {%extends "AppJuegos/padre.html"%}
+    {%load static%}
+
+    {% block titulo %}
+    Aca se ven los estudios de desarrollo de videojuegos
+    {%endblock%}
+
+    {% block agregar %}
+
+    <button class="btn btn-primary"> <a href="{%url 'estudiosFormulario'%}"> Agregar nuevo estudio</a></button>
+  
+    {%endblock%}
+
+    {%block contenidoQueCambia %}
+
+    <section class="contenedorCambiante">
+
+        <div class="contendores">
+            {% for x in object_list %}
+
+            <div class="cards">
+                <p>{{x.nombre}}</p>
+                <p>{{x.lanzamientosFamosos}}</p>
+
+            </div>
+
+            {% endfor %}
+        </div>
+
+    </section>
+    {%endblock%}
+
+
+</body>
+
+</html>

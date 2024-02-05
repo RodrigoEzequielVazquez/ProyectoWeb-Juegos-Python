@@ -7,24 +7,39 @@
 </head>
 <body>
 
-    <h1>Ingresa los datos para agregar un nuevo juego de PS5</h1>
+    {%extends "AppJuegos/padre.html"%}
+    {%load static%}
 
-    {% if miFormulario.errors %}
+    {% block titulo %}
+    Agrega un juego de PS5
+    {%endblock%}
 
-    <p style="color: red;"> Estan mal los datos, revisar</p>
+    {%block contenidoQueCambia %}
 
-    {% endif %}
+    <section class="contenedorCambiante">
 
-    <form action="" method="POST">
-        {% csrf_token %}
+        <h1>Ingresa los datos para agregar un nuevo juego de PS5</h1>
 
-        <table>
+        {% if form.errors %}
+    
+        <p style="color: red;"> Estan mal los datos, revisar</p>
+    
+        {% endif %}
+    
+        <form action="" method="POST">
+            {% csrf_token %}
+    
+            <table>
+    
+                {{form.as_table}}
+            </table>
+    
+            <input type="submit", value="enviar">
+        </form>
 
-            {{miFormulario.as_table}}
-        </table>
-
-        <input type="submit", value="enviar">
-    </form>
+    </section>
+        
+    {%endblock%}
     
 </body>
 </html>

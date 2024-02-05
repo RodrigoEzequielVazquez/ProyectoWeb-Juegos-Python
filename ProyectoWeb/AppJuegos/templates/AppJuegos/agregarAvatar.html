@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Agregar Avatar</title>
+</head>
+<body>
+
+    
+    {%extends "AppJuegos/padre.html"%}
+    {%load static%}
+
+    {% block titulo %}
+    Agrega tu avatar
+    {%endblock%}
+
+    {%block contenidoQueCambia %}
+
+    <section class="contenedorCambiante">
+
+        <h1>Subi tu nuevo avatar</h1>
+
+        {% if form.errors %}
+    
+        <p style="color: red;"> Estan mal los datos, revisar</p>
+    
+        {% endif %}
+    
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+    
+            <table>
+    
+                {{form.as_table}}
+                
+            </table>
+    
+            <input type="submit" value="Subir imagen" name="" id="">
+        </form>
+
+    </section>
+         
+    {%endblock%}
+
+</body>
+</html>

@@ -6,4 +6,5 @@ from .models import *
 admin.site.register(JuegosPS4)
 admin.site.register(JuegosPS5)
 admin.site.register(EstudiosDeJuegos)
+admin.site.register(AvatarImagen)
 

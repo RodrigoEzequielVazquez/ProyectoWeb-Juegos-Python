@@ -11,17 +11,32 @@
 
     {%extends "AppJuegos/padre.html"%}
     {%load static%}
+
+    {% block titulo %}
+    Aca se ven los estudios de desarrollo de videojuegos
+    {%endblock%}
+
+    {% block agregar %}
+
+    <button class="btn btn-primary"> <a href="{%url 'estudiosFormulario'%}"> Agregar nuevo estudio</a></button>
+  
+    {%endblock%}
+
     {%block contenidoQueCambia %}
 
     <section class="contenedorCambiante">
 
-        <h1>Aca se ven los estudios de desarrollo de videojuegos</h1>
+        <div class="contendores">
+            {% for x in estudios %}
 
-        {% for x in estudios %}
-        <p>{{x.nombre}}</p>
-        <p>{{x.lanzamientosFamosos}}</p>
-        <br>
-        {% endfor %}
+            <div class="cards">
+                <p>{{x.nombre}}</p>
+                <p>{{x.lanzamientosFamosos}}</p>
+
+            </div>
+
+            {% endfor %}
+        </div>
 
     </section>
     {%endblock%}

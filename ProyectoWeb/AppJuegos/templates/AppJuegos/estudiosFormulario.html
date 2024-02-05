@@ -1,30 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario - Agregar Estudio</title>
 </head>
+
 <body>
 
-    <h1>Ingresa los datos para agregar un nuevo estudios de desarrollo</h1>
 
-    {% if miFormulario.errors %}
+    {%extends "AppJuegos/padre.html"%}
+    {%load static%}
 
-    <p style="color: red;"> Estan mal los datos, revisar</p>
+    {% block titulo %}
+    Agrega un estudio de desarrollo
+    {%endblock%}
 
-    {% endif %}
+    {%block contenidoQueCambia %}
 
-    <form action="" method="POST">
-        {% csrf_token %}
+    <section class="contenedorCambiante">
 
-        <table>
+        <h1>Ingresa los datos para agregar un nuevo estudios de desarrollo</h1>
 
-            {{miFormulario.as_table}}
-        </table>
+        {% if form.errors %}
 
-        <input type="submit", value="enviar">
-    </form>
-    
+        <p style="color: red;"> Estan mal los datos, revisar</p>
+
+        {% endif %}
+
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <table>
+
+                {{form.as_table}}
+            </table>
+
+            <input type="submit" , value="enviar">
+        </form>
+
+    </section>
+
+        {%endblock%}
+
 </body>
+
 </html>

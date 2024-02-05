@@ -11,18 +11,34 @@
 
     {%extends "AppJuegos/padre.html"%}
     {%load static%}
+
+    {% block titulo %}
+    Aca se ven los juegos de PS5
+    {%endblock%}
+
+    
+    {% block agregar %}
+
+    <button class="btn btn-primary"> <a href="{%url 'juegosPS5Formulario'%}"> Agregar nuevo juego de PS5</a></button>
+  
+    {%endblock%}
+
     {%block contenidoQueCambia %}
 
     <section class="contenedorCambiante">
 
-        <h1>Aca se ven los juegos de PS5</h1>
+        <div class="contendores">
+            {% for x in juegos %}
 
-        {% for x in juegos %}
-        <p>{{x.nombre}}</p>
-        <p>{{x.genero}}</p>
-        <p>{{x.anio}}</p>
-        <br>
-        {% endfor %}
+            <div class="cards">
+                <p>{{x.nombre}}</p>
+                <p>{{x.genero}}</p>
+                <p>{{x.anio}}</p>
+                
+            </div>
+
+            {% endfor %}
+        </div>
     </section>
     {%endblock%}
 

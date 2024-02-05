@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario - Editar usuario</title>
+</head>
+<body>
+
+    {%extends "AppJuegos/padre.html"%}
+    {%load static%}
+
+    {% block titulo %}
+    Editar tu usuario
+    {%endblock%}
+
+    {%block contenidoQueCambia %}
+
+    <section class="contenedorCambiante">
+
+        <h1>Ingresa los datos para agregar editar tu usario</h1>
+
+        {% if form.errors %}
+    
+        <p style="color: red;"> Estan mal los datos, revisar</p>
+    
+        {% endif %}
+    
+        <form action="" method="POST">
+            {% csrf_token %}
+    
+            <table>
+    
+                {{form.as_table}}
+            </table>
+    
+            <input type="submit", value="Actualizar">
+        </form>
+
+    </section>
+         
+    {%endblock%}
+
+</body>
+</html>
+
