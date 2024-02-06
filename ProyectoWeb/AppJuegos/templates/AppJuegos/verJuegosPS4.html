@@ -19,7 +19,7 @@
     {% block agregar %}
 
     <button class="btn btn-primary"> <a href="{%url 'juegosPS4Formulario'%}"> Agregar nuevo juego de PS4</a></button>
-  
+
     {%endblock%}
 
 
@@ -38,14 +38,21 @@
                 <img id="imgJuegos" src="{{x.imagen.url}}" alt="">
                 <p>{{x.fecha}}</p>
 
+                {% if user.is_authenticated and user.is_staff %}
                 <button>
-                    <a href="{% url 'eliminarJuegoPS4' x.nombre %}" > Eliminar </a>
+                    <a href="{% url 'eliminarJuegoPS4' x.nombre %}">Eliminar</a>
                 </button>
+                {% endif %}
 
                 <button>
-                    <a href="{% url 'actualizarJuegosPS4Formulario' x.nombre %}" > Editar </a>
+                    <a href="{% url 'leerMasPS4' x.nombre %}"> Ver </a>
                 </button>
-                
+
+
+                <button>
+                    <a href="{% url 'actualizarJuegosPS4Formulario' x.nombre %}"> Editar </a>
+                </button>
+
             </div>
 
             {% endfor %}
