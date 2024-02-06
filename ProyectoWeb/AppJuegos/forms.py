@@ -66,4 +66,7 @@ class AvatarFormulario(forms.ModelForm):
         
         model = AvatarImagen
         fields = ["usuario","imagen"]
-    
+        
+    def __init__(self, *args, **kwargs):
+        super(AvatarFormulario, self).__init__(*args, **kwargs)
+        self.fields['usuario'].required = False   
