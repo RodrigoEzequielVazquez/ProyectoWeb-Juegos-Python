@@ -58,12 +58,6 @@ urlpatterns = [
     path("eliminarJuegoPS5/<juegoNombre>",eliminarJuegoPS5, name="eliminarJuegoPS5"),
     # Estudios
     
-    path("agregarEstudios",agregarEstudios, name="agregarEstudios"),
-    
-    path("verEstudios",verEstudios, name="verEstudios"),
-    
-    path("estudiosFormulario",estudiosFormulario, name="estudiosFormulario"),
-    
     path("listaDeEstudios/",ListaEstudios.as_view(),name="listaDeEstudios"),
     
     path("crearEstudios/",CrearEstudios.as_view(),name="crearEstudios"),
