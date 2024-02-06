@@ -3,19 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registro</title>
 </head>
 <body>
 
-    <form action="" method="POST">
-        
-        {% csrf_token %}
+    {%extends "AppJuegos/padre.html"%}
+    {%load static%}
 
-            {{form}}
+    {% block titulo %}
+    Registro
+    {%endblock%}
 
-        <button type="submit"> Registrate !</button>
+    {%block contenidoQueCambia %}
 
-    </form>
+    <section class="contenedorCambiante">
+
+        <h1>Ingresa tus datos para registrarte</h1>
+
+        {% if form.errors %}
     
+        <p style="color: red;"> Estan mal los datos, revisar</p>
+    
+        {% endif %}
+    
+        <form action="" method="POST">
+        
+            {% csrf_token %}
+    
+                {{form}}
+    
+            <button type="submit"> Registrate !</button>
+    
+        </form>
+    
+    </section>
+         
+    {%endblock%}
+
 </body>
 </html>
+

@@ -6,8 +6,22 @@
     <title>Logout</title>
 </head>
 <body>
-    
-    <h1> Te has deslogueado</h1>
+
+    {%extends "AppJuegos/padre.html"%}
+    {%load static%}
+
+    {% block titulo %}
+    Te deslogueaste
+    {%endblock%}
+
+    {%block contenidoQueCambia %}
+
+    <section class="contenedorCambiante">
+
+        <h1>Cerraste tu sesion</h1>
+
+         
+    {%endblock%}
 
 </body>
 </html>
