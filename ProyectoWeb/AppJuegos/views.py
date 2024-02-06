@@ -8,6 +8,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
 import datetime
 
 
@@ -147,7 +148,7 @@ def juegosPS4Formulario(request):
         
         juego.save()
         
-        return render(request,"AppJuegos/inicio.html")
+        return redirect("/verJuegosPS4")
     
     else:
         
@@ -169,7 +170,7 @@ def actualizarJuegosPS4Formulario(request, juegoNombre):
             juegoElegido.imagen = info["imagen"]
             juegoElegido.fecha = info["fecha"]
             juegoElegido.save()
-            return render(request, "AppJuegos/inicio.html")
+            return redirect("/verJuegosPS4")
     else:
         initial_data = {
             "nombre": juegoElegido.nombre,
@@ -223,7 +224,7 @@ def juegosPS5Formulario(request):
         
         juego.save()
         
-        return render(request,"AppJuegos/inicio.html")
+        return redirect("/verJuegosPS5")
     
     else:
         
@@ -245,7 +246,7 @@ def actualizarJuegosPS5Formulario(request, juegoNombre):
             juegoElegido.imagen = info["imagen"]
             juegoElegido.fecha = info["fecha"]
             juegoElegido.save()
-            return render(request, "AppJuegos/inicio.html")
+            return redirect("/verJuegosPS5")
     else:
         initial_data = {
             "nombre": juegoElegido.nombre,
