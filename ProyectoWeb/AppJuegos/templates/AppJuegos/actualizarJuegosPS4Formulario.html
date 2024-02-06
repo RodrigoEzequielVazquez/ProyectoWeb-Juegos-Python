@@ -6,35 +6,39 @@
     <title>Formulario - Actualizar Juego PS4</title>
 </head>
 <body>
-<!-- formulario con html
-    <form action="/AppJuegos/juegosPS4Formulario" method="POST">{% csrf_token %}
 
-        <p>Nombre del juego: <input type="text" name="nombre">  </p>
+    {%extends "AppJuegos/padre.html"%}
+    {%load static%}
 
-        <p>Genero: <input type="text" name="genero">  </p>
+    {% block titulo %}
+    Edita el juego
+    {%endblock%}
 
-        <p>Año de lanzamiento: <input type="number" name="anio">  </p>
+    {%block contenidoQueCambia %}
 
-        <input type="submit" value="enviar">
+    <section class="contenedorCambiante">
 
-    </form> -->
+        <h1>Ingresa los datos para agregar editar tu usario</h1>
 
-    <h1>Ingresa los datos para actualizar el juego</h1>
-
-{% if form.errors %}
-    <p style="color: red;">Están mal los datos, revisar</p>
-{% endif %}
-
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-
-    <table>
-        {{ form.as_table }}
-    </table>
-
-    <input type="submit" value="enviar">
-</form>
-
+        {% if form.errors %}
     
+        <p style="color: red;"> Estan mal los datos, revisar</p>
+    
+        {% endif %}
+    
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        
+            <table>
+                {{ form.as_table }}
+            </table>
+        
+            <input type="submit" value="Actualizar">
+        </form>
+
+    </section>
+         
+    {%endblock%}
+
 </body>
 </html>

@@ -31,11 +31,11 @@ urlpatterns = [
     
     path("juegosPS4Formulario",juegosPS4Formulario, name="juegosPS4Formulario"),
        
-    path("leerMasPS4/<juegoNombre>",leerMasPS4, name="leerMasPS4"),
+    path("leerMasPS4/<int:pk>",leerMasPS4, name="leerMasPS4"),
     
-    path("actualizarJuegosPS4Formulario/<juegoNombre>",actualizarJuegosPS4Formulario, name="actualizarJuegosPS4Formulario"),
+    path("actualizarJuegosPS4Formulario/<int:pk>",actualizarJuegosPS4Formulario, name="actualizarJuegosPS4Formulario"),
     
-    path("eliminarJuegoPS4/<juegoNombre>",eliminarJuegoPS4, name="eliminarJuegoPS4"),
+    path("eliminarJuegoPS4/<int:pk>",eliminarJuegoPS4, name="eliminarJuegoPS4"),
     
     # Juegos PS5
     
@@ -43,11 +43,11 @@ urlpatterns = [
     
     path("juegosPS5Formulario",juegosPS5Formulario, name="juegosPS5Formulario"),
     
-    path("leerMasPS5/<juegoNombre>",leerMasPS5, name="leerMasPS5"),
+    path("leerMasPS5/<int:pk>",leerMasPS5, name="leerMasPS5"),
     
-    path("actualizarJuegosPS5Formulario/<juegoNombre>",actualizarJuegosPS5Formulario, name="actualizarJuegosPS5Formulario"),
+    path("actualizarJuegosPS5Formulario/<int:pk>",actualizarJuegosPS5Formulario, name="actualizarJuegosPS5Formulario"),
     
-    path("eliminarJuegoPS5/<juegoNombre>",eliminarJuegoPS5, name="eliminarJuegoPS5"),
+    path("eliminarJuegoPS5/<int:pk>",eliminarJuegoPS5, name="eliminarJuegoPS5"),
     # Estudios
     
     path("listaDeEstudios/",ListaEstudios.as_view(),name="listaDeEstudios"),

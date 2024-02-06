@@ -40,17 +40,16 @@
 
                 {% if user.is_authenticated and user.is_staff %}
                 <button>
-                    <a href="{% url 'eliminarJuegoPS5' x.nombre %}">Eliminar</a>
+                    <a href="{% url 'eliminarJuegoPS5' x.id %}">Eliminar</a>
                 </button>
                 {% endif %}
 
                 <button>
-                    <a href="{% url 'leerMasPS5' x.nombre %}"> Ver </a>
+                    <a href="{% url 'leerMasPS5' x.id %}"> Ver </a>
                 </button>
 
-
                 <button>
-                    <a href="{% url 'actualizarJuegosPS5Formulario' x.nombre %}" > Editar </a>
+                    <a href="{% url 'actualizarJuegosPS5Formulario' x.id %}" > Editar </a>
                 </button>
                 
             </div>

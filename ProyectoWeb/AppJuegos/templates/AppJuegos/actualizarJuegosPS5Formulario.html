@@ -7,22 +7,38 @@
 </head>
 <body>
 
-    <h1>Ingresa los datos para actualizar el juego</h1>
+    {%extends "AppJuegos/padre.html"%}
+    {%load static%}
 
-{% if form.errors %}
-    <p style="color: red;">Están mal los datos, revisar</p>
-{% endif %}
+    {% block titulo %}
+    Editar el juego
+    {%endblock%}
 
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
+    {%block contenidoQueCambia %}
 
-    <table>
-        {{ form.as_table }}
-    </table>
+    <section class="contenedorCambiante">
 
-    <input type="submit" value="enviar">
-</form>
+        <h1>Ingresa los datos para agregar editar tu usario</h1>
 
+        {% if form.errors %}
     
+        <p style="color: red;"> Estan mal los datos, revisar</p>
+    
+        {% endif %}
+    
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        
+            <table>
+                {{ form.as_table }}
+            </table>
+        
+            <input type="submit" value="Actualizar">
+        </form>
+
+    </section>
+         
+    {%endblock%}
+
 </body>
 </html>

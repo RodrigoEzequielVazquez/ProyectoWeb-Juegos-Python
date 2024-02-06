@@ -156,8 +156,8 @@ def juegosPS4Formulario(request):
     
     return render(request,"AppJuegos/juegosPS4Formulario.html",{"form":form})
 
-def actualizarJuegosPS4Formulario(request, juegoNombre):
-    juegoElegido = JuegosPS4.objects.get(nombre=juegoNombre)
+def actualizarJuegosPS4Formulario(request, pk):
+    juegoElegido = JuegosPS4.objects.get(id=pk)
     
     if request.method == "POST":
         form = JuegosPS4Formulario(request.POST, request.FILES)  # Incluir request.FILES aquí
@@ -184,9 +184,9 @@ def actualizarJuegosPS4Formulario(request, juegoNombre):
     
     return render(request, "AppJuegos/actualizarJuegosPS4Formulario.html", {"form": form})
 
-def eliminarJuegoPS4(request, juegoNombre):
+def eliminarJuegoPS4(request, pk):
     
-    juegoElegido = JuegosPS4.objects.get(nombre=juegoNombre)
+    juegoElegido = JuegosPS4.objects.get(id=pk)
     
     juegoElegido.delete()
     
@@ -198,9 +198,9 @@ def eliminarJuegoPS4(request, juegoNombre):
 
 #Leer mas sobre el juego
 
-def leerMasPS4(request, juegoNombre):
+def leerMasPS4(request, pk):
     
-    juegoElegido = JuegosPS4.objects.get(nombre=juegoNombre)
+    juegoElegido = JuegosPS4.objects.get(id=pk)
     
     return render(request,"AppJuegos/leerMasPS4.html",{"juego":juegoElegido})
         
@@ -232,8 +232,8 @@ def juegosPS5Formulario(request):
     
     return render(request,"AppJuegos/juegosPS5Formulario.html",{"form":form})
 
-def actualizarJuegosPS5Formulario(request, juegoNombre):
-    juegoElegido = JuegosPS5.objects.get(nombre=juegoNombre)
+def actualizarJuegosPS5Formulario(request, pk):
+    juegoElegido = JuegosPS5.objects.get(id=pk)
     
     if request.method == "POST":
         form = JuegosPS5Formulario(request.POST, request.FILES)  # Incluir request.FILES aquí
@@ -260,9 +260,9 @@ def actualizarJuegosPS5Formulario(request, juegoNombre):
     
     return render(request, "AppJuegos/actualizarJuegosPS5Formulario.html", {"form": form})
 
-def eliminarJuegoPS5(request, juegoNombre):
+def eliminarJuegoPS5(request, pk):
     
-    juegoElegido = JuegosPS5.objects.get(nombre=juegoNombre)
+    juegoElegido = JuegosPS5.objects.get(id=pk)
     
     juegoElegido.delete()
     
@@ -274,9 +274,9 @@ def eliminarJuegoPS5(request, juegoNombre):
 
 #Leer mas sobre el juego
 
-def leerMasPS5(request, juegoNombre):
+def leerMasPS5(request, pk):
     
-    juegoElegido = JuegosPS5.objects.get(nombre=juegoNombre)
+    juegoElegido = JuegosPS5.objects.get(id=pk)
     
     return render(request,"AppJuegos/leerMasPS5.html",{"juego":juegoElegido})
 
