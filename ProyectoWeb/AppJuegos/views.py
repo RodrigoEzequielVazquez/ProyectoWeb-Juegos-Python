@@ -14,14 +14,96 @@ import datetime
 
 # Create your views here.
 
+#Inicio
+
 def inicio(request):
     
     return render(request,"AppJuegos/inicio.html")
 
+#Registro
+
+def register(request):
+    
+    if request.method == "POST":
+        
+        # form = UserCreationForm(request.POST)
+        form = RegistrarUsuario(request.POST)
+        
+        if form.is_valid():
+            
+            username = form.cleaned_data["username"]
+            form.save()
+            return render(request,"AppJuegos/inicio.html", {"mensaje":"Usuario Creado"})
+        
+    else:
+        # form = UserCreationForm()
+        form = RegistrarUsuario(request.POST)
+        
+    return render(request,"AppJuegos/registro.html", {"form":form})  
+
+#Login
+
+def loginRequest(request):
+    
+    if request.method == "POST":
+        
+        form = AuthenticationForm(request,data = request.POST)
+        
+        if form.is_valid():
+            usuario = form.cleaned_data.get("username")
+            contraseña = form.cleaned_data.get("password")
+            
+            user = authenticate(username=usuario, password=contraseña)
+            
+            if user is not None:
+                login(request, user)
+                
+                return render(request,"AppJuegos/inicio.html", {"mensaje":f"Bienvenido {usuario}"})
+        
+    else:
+            
+        form = AuthenticationForm()
+    
+    return render(request,"AppJuegos/login.html", {"form":form})
+
+#Logout
+
+def cerrarSesion(request):
+    logout(request)
+     
+    return render(request,"AppJuegos/logout.html")
+
+#Editar Perfil
+
+def editarPerfil(request):
+    
+    usuarioActual = request.user
+    
+    if request.method == "POST":
+        
+        # form = UserCreationForm(request.POST)
+        form = RegistrarUsuario(request.POST)
+        
+        if form.is_valid():
+            
+            info = form.cleaned_data
+            
+            usuarioActual.first_name = info["first_name"]
+            usuarioActual.last_name = info["last_name"]
+            usuarioActual.email = info["email"]
+            usuarioActual.set_password(info["password1"])
+            
+            usuarioActual.save()
+            return render(request,"AppJuegos/inicio.html", {"mensaje":"Usuario actualizado"})
+        
+    else:
+        # form = UserCreationForm()
+        form = EditarUsuario(initial={"first_name": usuarioActual.first_name,"last_name": usuarioActual.last_name,"email": usuarioActual.email})
+        
+    return render(request,"AppJuegos/editarUsuario.html", {"form":form})  
 
 #Vista para subir imagenes(avatares)
 
-@login_required()
 def agregarAvatar(request):
    
     if request.method == "POST":
@@ -50,14 +132,7 @@ def about(request):
     
     return render(request,"AppJuegos/about.html")
     
-# agregar y ver los juegos de PS4
-
-def agregarJuegoPS4(request):
-    
-    juego1= JuegosPS4(nombre="Resident Evil 4",genero="Accion-aventura",descripcion="Es un juego de zombies",imagen="",fecha=None,año=2005)
-    juego1.save()
-    
-    return HttpResponse("Se agrego un juego")
+# CRUD Juegos PS4
 
 def verJuegosPS4(request):
     
@@ -67,7 +142,7 @@ def verJuegosPS4(request):
         
     return render(request,"AppJuegos/verJuegosPS4.html",info) 
 
-# Funciones de agregar juegos de PS4 con formularios.
+# Funcion de agregar juegos de PS4 con formularios.
 
 def juegosPS4Formulario(request):
     
@@ -84,24 +159,6 @@ def juegosPS4Formulario(request):
         form = JuegosPS4Formulario()
     
     return render(request,"AppJuegos/juegosPS4Formulario.html",{"form":form})
-
-def busquedaJuegosPS4(request):
-    return render(request,"AppJuegos/busquedaJuegosPS4.html")
-
-def buscarPS4(request):
-    
-    if request.GET["nombre"]:
-        
-        juego = request.GET["nombre"]
-        juegosPS4 = JuegosPS4.objects.filter(nombre__icontains=juego)
-        
-        return render(request,"AppJuegos/resultadosBusquedaJuegosPS4.html",{"juegos":juegosPS4,"nombre":juego})
-        
-    else:
-        
-       respuesta = "No enviaste datos"
-    
-    return HttpResponse(respuesta)
 
 def actualizarJuegosPS4Formulario(request, juegoNombre):
     juegoElegido = JuegosPS4.objects.get(nombre=juegoNombre)
@@ -142,6 +199,26 @@ def eliminarJuegoPS4(request, juegoNombre):
     contexto= {"juegos":juegos}
     
     return render(request,"AppJuegos/verJuegosPS4.html",contexto)
+
+#Buscar Juegos de PS4 por nombre
+
+def busquedaJuegosPS4(request):
+    return render(request,"AppJuegos/busquedaJuegosPS4.html")
+
+def buscarPS4(request):
+    
+    if request.GET["nombre"]:
+        
+        juego = request.GET["nombre"]
+        juegosPS4 = JuegosPS4.objects.filter(nombre__icontains=juego)
+        
+        return render(request,"AppJuegos/resultadosBusquedaJuegosPS4.html",{"juegos":juegosPS4,"nombre":juego})
+        
+    else:
+        
+       respuesta = "No enviaste datos"
+    
+    return HttpResponse(respuesta)
 
 # agregar y ver los juegos de PS5
 
@@ -271,82 +348,4 @@ class EliminarEstudio(DeleteView):
     model = EstudiosDeJuegos
     template_name = "AppJuegos/eliminarEstudio.html" 
     success_url = "/listaDeEstudios"   
-
-#Login
-
-def loginRequest(request):
-    
-    if request.method == "POST":
-        
-        form = AuthenticationForm(request,data = request.POST)
-        
-        if form.is_valid():
-            usuario = form.cleaned_data.get("username")
-            contraseña = form.cleaned_data.get("password")
-            
-            user = authenticate(username=usuario, password=contraseña)
-            
-            if user is not None:
-                login(request, user)
-                
-                return render(request,"AppJuegos/inicio.html", {"mensaje":f"Bienvenido {usuario}"})
-        
-    else:
-            
-        form = AuthenticationForm()
-    
-    return render(request,"AppJuegos/login.html", {"form":form})
-
-
-def register(request):
-    
-    if request.method == "POST":
-        
-        # form = UserCreationForm(request.POST)
-        form = RegistrarUsuario(request.POST)
-        
-        if form.is_valid():
-            
-            username = form.cleaned_data["username"]
-            form.save()
-            return render(request,"AppJuegos/inicio.html", {"mensaje":"Usuario Creado"})
-        
-    else:
-        # form = UserCreationForm()
-        form = RegistrarUsuario(request.POST)
-        
-    return render(request,"AppJuegos/registro.html", {"form":form})  
-
-@login_required
-def cerrarSesion(request):
-    logout(request)
-     
-    return render(request,"AppJuegos/logout.html")
-
-def editarPerfil(request):
-    
-    usuarioActual = request.user
-    
-    if request.method == "POST":
-        
-        # form = UserCreationForm(request.POST)
-        form = RegistrarUsuario(request.POST)
-        
-        if form.is_valid():
-            
-            info = form.cleaned_data
-            
-            usuarioActual.first_name = info["first_name"]
-            usuarioActual.last_name = info["last_name"]
-            usuarioActual.email = info["email"]
-            usuarioActual.set_password(info["password1"])
-            
-            usuarioActual.save()
-            return render(request,"AppJuegos/inicio.html", {"mensaje":"Usuario actualizado"})
-        
-    else:
-        # form = UserCreationForm()
-        form = EditarUsuario(initial={"first_name": usuarioActual.first_name,"last_name": usuarioActual.last_name,"email": usuarioActual.email})
-        
-    return render(request,"AppJuegos/editarUsuario.html", {"form":form})  
 
