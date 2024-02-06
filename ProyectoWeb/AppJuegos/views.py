@@ -18,8 +18,26 @@ import datetime
 #Inicio
 
 def inicio(request):
+    # Obtener todos los juegos de PS4
+    juegos_ps4 = JuegosPS4.objects.all()
+
+    # Obtener el último juego de PS4 de toda la colección
+    ultimo_juego_ps4 = juegos_ps4.last() if juegos_ps4 else None
+
+    # Obtener todos los juegos de PS5
+    juegos_ps5 = JuegosPS5.objects.all()
+
+    # Obtener el último juego de PS5 de toda la colección
+    ultimo_juego_ps5 = juegos_ps5.last() if juegos_ps5 else None
+
+    # Pasar los juegos a la plantilla
+    contexto = {
+        'ultimo_juego_ps4': ultimo_juego_ps4,
+        'ultimo_juego_ps5': ultimo_juego_ps5,
+    }
     
-    return render(request,"AppJuegos/inicio.html",{"user":request.user})
+    return render(request, "AppJuegos/inicio.html", {"user": request.user, "contexto": contexto})
+
 
 #Registro
 
@@ -133,7 +151,7 @@ def about(request):
 def verJuegosPS4(request):
     
     juegosPS4 = JuegosPS4.objects.all() #obtengo todos los datos en mi tabla Juegos
-    
+     
     info = {"juegos":juegosPS4}
         
     return render(request,"AppJuegos/verJuegosPS4.html",info) 
@@ -211,7 +229,7 @@ def verJuegosPS5(request):
     juegosPS5 = JuegosPS5.objects.all() #obtengo todos los datos en mi tabla Juegos
     
     info = {"juegos":juegosPS5}
-        
+     
     return render(request,"AppJuegos/verJuegosPS5.html",info) 
 
 # Funcion de agregar juegos de PS5 con formularios.

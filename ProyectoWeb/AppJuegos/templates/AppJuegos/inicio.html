@@ -5,13 +5,47 @@
 
 {% if user.is_authenticated %}
 Bienvenido {{user}}, espero que disfrutes navegando en la página!
-    
+{{ juegos_ps4 }}
+{{ juegos_ps5 }}
+
 {% else %}
-Bienvenido, inicia sesión o regístrate para poder agregar o editar un juego o estudio!
+Bienvenido, inicia sesión para poder agregar o editar un juego o estudio!
 {% endif %}
 
 {%endblock%}
 
 {%block contenidoQueCambia %}
-       
+
+<section>
+
+    {% if contexto.ultimo_juego_ps4 %}
+    <h2>Último juego de PS4:</h2>
+    <p>Nombre: {{ contexto.ultimo_juego_ps4.nombre }}</p>
+    <p>Género: {{ contexto.ultimo_juego_ps4.genero }}</p>
+    <p>Descripción: {{ contexto.ultimo_juego_ps4.descripcion }}</p>
+    <p>Año: {{ contexto.ultimo_juego_ps4.año }}</p>
+    {% if contexto.ultimo_juego_ps4.imagen %}
+        <img src="{{ contexto.ultimo_juego_ps4.imagen.url }}" alt="Imagen del juego">
+    {% endif %}
+    <p>Fecha: {{ contexto.ultimo_juego_ps4.fecha }}</p>
+{% else %}
+    <p>No hay juegos de PS4 disponibles.</p>
+{% endif %}
+
+{% if contexto.ultimo_juego_ps5 %}
+    <h2>Último juego de PS5:</h2>
+    <p>Nombre: {{ contexto.ultimo_juego_ps5.nombre }}</p>
+    <p>Género: {{ contexto.ultimo_juego_ps5.genero }}</p>
+    <p>Descripción: {{ contexto.ultimo_juego_ps5.descripcion }}</p>
+    <p>Año: {{ contexto.ultimo_juego_ps5.año }}</p>
+    {% if contexto.ultimo_juego_ps5.imagen %}
+        <img src="{{ contexto.ultimo_juego_ps5.imagen.url }}" alt="Imagen del juego">
+    {% endif %}
+    <p>Fecha: {{ contexto.ultimo_juego_ps5.fecha }}</p>
+{% else %}
+    <p>No hay juegos de PS5 disponibles.</p>
+{% endif %}
+
+</section>
+
 {%endblock%}
