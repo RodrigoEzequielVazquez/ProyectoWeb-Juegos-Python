@@ -308,16 +308,6 @@ def buscarPS5(request):
     
     return HttpResponse(respuesta)
 
-
-# agregar y ver los estudios
-
-def agregarEstudios(request):
-    
-    estudio1= EstudiosDeJuegos(nombre="Bend Studio",lanzamientosFamosos="Days gone")
-    estudio1.save()
-    
-    return HttpResponse("Se agrego un nuevo estudio")
-
 # CRUD de estudios
     
 class ListaEstudios(ListView):
