@@ -19,7 +19,7 @@ import datetime
 
 def inicio(request):
     
-    return render(request,"AppJuegos/inicio.html")
+    return render(request,"AppJuegos/inicio.html",{"user":request.user})
 
 #Registro
 
@@ -34,7 +34,7 @@ def register(request):
             
             username = form.cleaned_data["username"]
             form.save()
-            return render(request,"AppJuegos/inicio.html", {"mensaje":"Usuario Creado"})
+            return redirect("/")
         
     else:
         # form = UserCreationForm()
@@ -59,7 +59,7 @@ def loginRequest(request):
             if user is not None:
                 login(request, user)
                 
-                return render(request,"AppJuegos/inicio.html", {"mensaje":f"Bienvenido {usuario}"})
+                return redirect("/")
         
     else:
             
@@ -72,7 +72,7 @@ def loginRequest(request):
 def cerrarSesion(request):
     logout(request)
      
-    return render(request,"AppJuegos/logout.html")
+    return redirect("/")
 
 #Editar Perfil
 
