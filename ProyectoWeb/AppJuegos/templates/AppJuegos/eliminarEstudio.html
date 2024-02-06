@@ -1,7 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<form action="" method="POST">{% csrf_token %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Estudio</title>
+</head>
 
-    <p>¿ Estas seguro de que queres eliminar el estudio: {{object}}?</p>
+<body>
 
-    <input type="submit" value="borrar" name="" id="">
-</form>
+    {%extends "AppJuegos/padre.html"%}
+    {%load static%}
+
+    {% block titulo %}
+    Eliminar {{object}}
+    {%endblock%}
+
+    {%block contenidoQueCambia %}
+
+    <section class="contenedorCambiante">
+
+
+        <form action="" method="POST">{% csrf_token %}
+
+            <p>¿ Estas seguro de que queres eliminar el estudio: {{object}}?</p>
+
+            <input type="submit" value="borrar" name="" id="">
+        </form>
+  
+    </section>
+    {%endblock%}
+
+
+</body>
+
+</html>

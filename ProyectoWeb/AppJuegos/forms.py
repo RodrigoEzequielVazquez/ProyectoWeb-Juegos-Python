@@ -17,7 +17,10 @@ class JuegosPS5Formulario(forms.Form):
     
     nombre=forms.CharField(max_length=30)
     genero= forms.CharField(max_length=30)
-    anio= forms.IntegerField()
+    descripcion = forms.CharField()
+    imagen = forms.ImageField()
+    año= forms.IntegerField()
+    fecha= forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     
 class EstudiosFormulario(forms.Form):
     

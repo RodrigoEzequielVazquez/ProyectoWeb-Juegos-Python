@@ -16,12 +16,12 @@
     Aca se ven los juegos de PS5
     {%endblock%}
 
-    
     {% block agregar %}
 
     <button class="btn btn-primary"> <a href="{%url 'juegosPS5Formulario'%}"> Agregar nuevo juego de PS5</a></button>
   
     {%endblock%}
+
 
     {%block contenidoQueCambia %}
 
@@ -33,7 +33,18 @@
             <div class="cards">
                 <p>{{x.nombre}}</p>
                 <p>{{x.genero}}</p>
-                <p>{{x.anio}}</p>
+                <p>{{x.descripcion}}</p>
+                <p>{{x.año}}</p>
+                <img id="imgJuegos" src="{{x.imagen.url}}" alt="">
+                <p>{{x.fecha}}</p>
+
+                <button>
+                    <a href="{% url 'eliminarJuegoPS5' x.nombre %}" > Eliminar </a>
+                </button>
+
+                <button>
+                    <a href="{% url 'actualizarJuegosPS5Formulario' x.nombre %}" > Editar </a>
+                </button>
                 
             </div>
 
@@ -41,6 +52,7 @@
         </div>
     </section>
     {%endblock%}
+
 
 </body>
 

@@ -53,6 +53,9 @@ urlpatterns = [
     
     path("buscarPS5/",buscarPS5),
     
+    path("actualizarJuegosPS5Formulario/<juegoNombre>",actualizarJuegosPS5Formulario, name="actualizarJuegosPS5Formulario"),
+    
+    path("eliminarJuegoPS5/<juegoNombre>",eliminarJuegoPS5, name="eliminarJuegoPS5"),
     # Estudios
     
     path("agregarEstudios",agregarEstudios, name="agregarEstudios"),

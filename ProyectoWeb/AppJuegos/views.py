@@ -59,7 +59,6 @@ def agregarJuegoPS4(request):
     
     return HttpResponse("Se agrego un juego")
 
-@login_required  
 def verJuegosPS4(request):
     
     juegosPS4 = JuegosPS4.objects.all() #obtengo todos los datos en mi tabla Juegos
@@ -161,30 +160,13 @@ def verJuegosPS5(request):
         
     return render(request,"AppJuegos/verJuegosPS5.html",info) 
 
-# agregar y ver los estudios
-
-def agregarEstudios(request):
-    
-    estudio1= EstudiosDeJuegos(nombre="Bend Studio",lanzamientosFamosos="Days gone")
-    estudio1.save()
-    
-    return HttpResponse("Se agrego un nuevo estudio")
-    
-def verEstudios(request):
-    
-    estudios = EstudiosDeJuegos.objects.all() #obtengo todos los datos en mi tabla Juegos
-    
-    info = {"estudios":estudios}
-        
-    return render(request,"AppJuegos/verEstudios.html",info) 
-
 # Funciones de agregar juegos de PS5 con formularios.
 
 def juegosPS5Formulario(request):
     
     if request.method == "POST":
         
-        juego = JuegosPS5(nombre= request.POST["nombre"],genero= request.POST["genero"], anio= request.POST["anio"])
+        juego = JuegosPS5(nombre= request.POST["nombre"],genero= request.POST["genero"], año= request.POST["año"], descripcion= request.POST["descripcion"],fecha= request.POST["fecha"], imagen= request.FILES["imagen"])
         
         juego.save()
         
@@ -214,6 +196,62 @@ def buscarPS5(request):
     
     return HttpResponse(respuesta)
 
+def actualizarJuegosPS5Formulario(request, juegoNombre):
+    juegoElegido = JuegosPS5.objects.get(nombre=juegoNombre)
+    
+    if request.method == "POST":
+        form = JuegosPS5Formulario(request.POST, request.FILES)  # Incluir request.FILES aquí
+        if form.is_valid():
+            info = form.cleaned_data
+            juegoElegido.nombre = info["nombre"]
+            juegoElegido.genero = info["genero"]
+            juegoElegido.año = info["año"]
+            juegoElegido.descripcion = info["descripcion"]
+            juegoElegido.imagen = info["imagen"]
+            juegoElegido.fecha = info["fecha"]
+            juegoElegido.save()
+            return render(request, "AppJuegos/inicio.html")
+    else:
+        initial_data = {
+            "nombre": juegoElegido.nombre,
+            "genero": juegoElegido.genero,
+            "año": juegoElegido.año,
+            "descripcion": juegoElegido.descripcion,
+            "imagen": juegoElegido.imagen,
+            "fecha": datetime.date.today()
+        }
+        form = JuegosPS5Formulario(initial=initial_data)
+    
+    return render(request, "AppJuegos/actualizarJuegosPS5Formulario.html", {"form": form})
+
+def eliminarJuegoPS5(request, juegoNombre):
+    
+    juegoElegido = JuegosPS5.objects.get(nombre=juegoNombre)
+    
+    juegoElegido.delete()
+    
+    juegos = JuegosPS5.objects.all()
+    
+    contexto= {"juegos":juegos}
+    
+    return render(request,"AppJuegos/verJuegosPS5.html",contexto)
+
+# agregar y ver los estudios
+
+def agregarEstudios(request):
+    
+    estudio1= EstudiosDeJuegos(nombre="Bend Studio",lanzamientosFamosos="Days gone")
+    estudio1.save()
+    
+    return HttpResponse("Se agrego un nuevo estudio")
+    
+def verEstudios(request):
+    
+    estudios = EstudiosDeJuegos.objects.all() #obtengo todos los datos en mi tabla Juegos
+    
+    info = {"estudios":estudios}
+        
+    return render(request,"AppJuegos/verEstudios.html",info) 
 
 # funciones para agregar estudios por formularios
 
@@ -243,20 +281,20 @@ class CrearEstudios(CreateView):
     model = EstudiosDeJuegos
     template_name = "AppJuegos/crearEstudios.html" 
     fields = ["nombre","lanzamientosFamosos"]
-    success_url = "/AppJuegos/listaDeEstudios"
+    success_url = "/listaDeEstudios"
     
 class ActualizarEstudio(UpdateView):
     
     model = EstudiosDeJuegos
-    template_name = "AppJuegos/crearEstudios.html" 
+    template_name = "AppJuegos/actualizarEstudio.html" 
     fields = ["nombre","lanzamientosFamosos"]
-    success_url = "/AppJuegos/listaDeEstudios"    
+    success_url = "/listaDeEstudios"    
    
 class EliminarEstudio(DeleteView):
     
     model = EstudiosDeJuegos
     template_name = "AppJuegos/eliminarEstudio.html" 
-    success_url = "/AppJuegos/listaDeEstudios"   
+    success_url = "/listaDeEstudios"   
 
 #Login
 

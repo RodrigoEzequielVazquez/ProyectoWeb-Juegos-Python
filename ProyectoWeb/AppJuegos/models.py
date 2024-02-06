@@ -23,7 +23,10 @@ class JuegosPS5(models.Model):
     
     nombre=models.CharField(max_length=30)
     genero= models.CharField(max_length=30)
-    anio= models.IntegerField()
+    descripcion = models.CharField(max_length=300)
+    imagen = models.ImageField(upload_to="imagenesPS5", null=True, blank=True)
+    año= models.IntegerField()
+    fecha= models.DateField(auto_now=True)
     
 class EstudiosDeJuegos(models.Model):
     
