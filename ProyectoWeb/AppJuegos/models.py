@@ -37,7 +37,7 @@ class EstudiosDeJuegos(models.Model):
     lanzamientosFamosos=models.CharField(max_length=30)
     
 class AvatarImagen(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True)  # Ahora puede ser nulo
     imagen = models.ImageField(upload_to="avatares", null=True, blank=True)
     
     def __str__(self):
