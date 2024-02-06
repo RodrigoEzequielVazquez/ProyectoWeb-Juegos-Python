@@ -44,12 +44,14 @@
                 </button>
                 {% endif %}
 
+                {% if user.is_authenticated %}
                 <button>
-                    <a href="{% url 'leerMasPS4' x.id %}"> Ver </a>
+                    <a href="{% url 'actualizarJuegosPS4Formulario' x.id %}">Editar</a>
                 </button>
+                {% endif %}
 
                 <button>
-                    <a href="{% url 'actualizarJuegosPS4Formulario' x.id %}"> Editar </a>
+                    <a href="{% url 'leerMasPS4' x.id %}"> Ver </a>
                 </button>
 
             </div>
