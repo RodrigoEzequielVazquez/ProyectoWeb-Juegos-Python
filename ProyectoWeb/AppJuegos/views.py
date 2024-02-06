@@ -244,34 +244,10 @@ def agregarEstudios(request):
     estudio1.save()
     
     return HttpResponse("Se agrego un nuevo estudio")
-    
-def verEstudios(request):
-    
-    estudios = EstudiosDeJuegos.objects.all() #obtengo todos los datos en mi tabla Juegos
-    
-    info = {"estudios":estudios}
-        
-    return render(request,"AppJuegos/verEstudios.html",info) 
 
-# funciones para agregar estudios por formularios
-
-def estudiosFormulario(request):
+# CRUD de estudios
     
-    if request.method == "POST":
-        
-        estudios = EstudiosDeJuegos(nombre= request.POST["nombre"],lanzamientosFamosos= request.POST["lanzamientosFamosos"])
-        
-        estudios.save()
-        
-        return render(request,"AppJuegos/inicio.html")
-    
-    else:
-        
-        form = EstudiosFormulario()
-    
-    return render(request,"AppJuegos/estudiosFormulario.html",{"form":form})
-
-class ListaEstudios(LoginRequiredMixin,ListView):
+class ListaEstudios(ListView):
     
     model = EstudiosDeJuegos
     template_name = "AppJuegos/estudiosList.html"
