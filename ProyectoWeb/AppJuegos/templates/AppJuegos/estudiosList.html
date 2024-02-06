@@ -18,8 +18,12 @@
 
     {% block agregar %}
 
-    <button class="btn btn-primary"> <a href="{%url 'crearEstudios'%}"> Agregar nuevo estudio</a></button>
-  
+    {% if user.is_authenticated %}
+
+    <button class="btn btn-primary"> <a href="{%url 'crearEstudios'%}"> Agregar nuevo juego de PS5</a></button>
+
+    {% endif %}
+
     {%endblock%}
 
     {%block contenidoQueCambia %}

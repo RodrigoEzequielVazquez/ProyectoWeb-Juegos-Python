@@ -18,10 +18,13 @@
 
     {% block agregar %}
 
-    <button class="btn btn-primary"> <a href="{%url 'juegosPS5Formulario'%}"> Agregar nuevo juego de PS5</a></button>
-  
-    {%endblock%}
+    {% if user.is_authenticated %}
 
+    <button class="btn btn-primary"> <a href="{%url 'juegosPS5Formulario'%}"> Agregar nuevo juego de PS5</a></button>
+
+    {% endif %}
+
+    {%endblock%}
 
     {%block contenidoQueCambia %}
 
@@ -43,7 +46,7 @@
                     <a href="{% url 'eliminarJuegoPS5' x.id %}">Eliminar</a>
                 </button>
                 {% endif %}
-
+              
                 {% if user.is_authenticated %}
                 <button>
                     <a href="{% url 'actualizarJuegosPS5Formulario' x.id %}" > Editar </a>

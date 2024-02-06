@@ -2,7 +2,14 @@
 {%load static%}
 
 {% block titulo %}
-Bienvenidos
+
+{% if user.is_authenticated %}
+Bienvenido {{user}}, espero que disfrutes navegando en la página!
+    
+{% else %}
+Bienvenido, inicia sesión o regístrate para poder agregar o editar un juego o estudio!
+{% endif %}
+
 {%endblock%}
 
 {%block contenidoQueCambia %}
