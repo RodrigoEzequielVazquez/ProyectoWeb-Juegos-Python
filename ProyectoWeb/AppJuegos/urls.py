@@ -30,10 +30,8 @@ urlpatterns = [
     #agregar Juegos con formularios 
     
     path("juegosPS4Formulario",juegosPS4Formulario, name="juegosPS4Formulario"),
-    
-    path("busquedaJuegosPS4",busquedaJuegosPS4, name="busquedaJuegosPS4"),
-    
-    path("buscarPS4",buscarPS4),
+       
+    path("leerMasPS4/<juegoNombre>",leerMasPS4, name="leerMasPS4"),
     
     path("actualizarJuegosPS4Formulario/<juegoNombre>",actualizarJuegosPS4Formulario, name="actualizarJuegosPS4Formulario"),
     
@@ -45,9 +43,7 @@ urlpatterns = [
     
     path("juegosPS5Formulario",juegosPS5Formulario, name="juegosPS5Formulario"),
     
-    path("busquedaJuegosPS5",busquedaJuegosPS5, name="busquedaJuegosPS5"),
-    
-    path("buscarPS5/",buscarPS5),
+    path("leerMasPS5/<juegoNombre>",leerMasPS5, name="leerMasPS5"),
     
     path("actualizarJuegosPS5Formulario/<juegoNombre>",actualizarJuegosPS5Formulario, name="actualizarJuegosPS5Formulario"),
     

@@ -104,27 +104,22 @@ def editarPerfil(request):
 
 #Vista para subir imagenes(avatares)
 
+from django.shortcuts import redirect
+
 def agregarAvatar(request):
-   
     if request.method == "POST":
-        
         form = AvatarFormulario(request.POST, request.FILES)
-        
         if form.is_valid():
-            
-            informacion = form.cleaned_data
-            
-            avatar = AvatarImagen(usuario=request.user, imagen=informacion["imagen"])
-            
+            avatar = form.save(commit=False)
+            avatar.usuario = request.user  # Asigna directamente el usuario actual
             avatar.save()
-            
-            return render(request,"AppJuegos/inicio.html",{"form":form})
-    
+            return render(request,"AppJuegos/inicio.html")  # Redirige a la página de inicio
     else:
-        
         form = AvatarFormulario()
-        
-    return render(request,"AppJuegos/agregarAvatar.html",{"form":form})
+        # Excluimos el campo de usuario del formulario
+        form.fields['usuario'].widget = forms.HiddenInput()
+    return render(request, "AppJuegos/agregarAvatar.html", {"form": form})
+
 
 # about
 
@@ -196,30 +191,18 @@ def eliminarJuegoPS4(request, juegoNombre):
     
     juegos = JuegosPS4.objects.all()
     
-    contexto= {"juegos":juegos}
+    contexto= {"juegos":juegos, "user":request.user}
     
     return render(request,"AppJuegos/verJuegosPS4.html",contexto)
 
-#Buscar Juegos de PS4 por nombre
+#Leer mas sobre el juego
 
-def busquedaJuegosPS4(request):
-    return render(request,"AppJuegos/busquedaJuegosPS4.html")
-
-def buscarPS4(request):
+def leerMasPS4(request, juegoNombre):
     
-    if request.GET["nombre"]:
-        
-        juego = request.GET["nombre"]
-        juegosPS4 = JuegosPS4.objects.filter(nombre__icontains=juego)
-        
-        return render(request,"AppJuegos/resultadosBusquedaJuegosPS4.html",{"juegos":juegosPS4,"nombre":juego})
-        
-    else:
-        
-       respuesta = "No enviaste datos"
+    juegoElegido = JuegosPS4.objects.get(nombre=juegoNombre)
     
-    return HttpResponse(respuesta)
-
+    return render(request,"AppJuegos/leerMasPS4.html",{"juego":juegoElegido})
+        
 # agregar y ver los juegos de PS5
 
 def verJuegosPS5(request):
@@ -288,25 +271,13 @@ def eliminarJuegoPS5(request, juegoNombre):
     
     return render(request,"AppJuegos/verJuegosPS5.html",contexto)
 
-#Buscar juegos de PS5 por nombre
+#Leer mas sobre el juego
 
-def busquedaJuegosPS5(request):
-    return render(request,"AppJuegos/busquedaJuegosPS5.html")
-
-def buscarPS5(request):
+def leerMasPS5(request, juegoNombre):
     
-    if request.GET["nombre"]:
-        
-        juego = request.GET["nombre"]
-        juegosPS4 = JuegosPS5.objects.filter(nombre__icontains=juego)
-        
-        return render(request,"AppJuegos/resultadosBusquedaJuegosPS5.html",{"juegos":juegosPS4,"nombre":juego})
-        
-    else:
-        
-       respuesta = "No enviaste datos"
+    juegoElegido = JuegosPS5.objects.get(nombre=juegoNombre)
     
-    return HttpResponse(respuesta)
+    return render(request,"AppJuegos/leerMasPS5.html",{"juego":juegoElegido})
 
 # CRUD de estudios
     
