@@ -222,13 +222,6 @@ def buscarPS4(request):
 
 # agregar y ver los juegos de PS5
 
-def agregarJuegoPS5(request):
-    
-    juego1= JuegosPS5(nombre="Spider-Man 2",genero="Acción-aventura",anio=2023)
-    juego1.save()
-    
-    return HttpResponse("Se agrego un juego")
-    
 def verJuegosPS5(request):
     
     juegosPS5 = JuegosPS5.objects.all() #obtengo todos los datos en mi tabla Juegos
@@ -237,7 +230,7 @@ def verJuegosPS5(request):
         
     return render(request,"AppJuegos/verJuegosPS5.html",info) 
 
-# Funciones de agregar juegos de PS5 con formularios.
+# Funcion de agregar juegos de PS5 con formularios.
 
 def juegosPS5Formulario(request):
     
@@ -254,24 +247,6 @@ def juegosPS5Formulario(request):
         form = JuegosPS5Formulario()
     
     return render(request,"AppJuegos/juegosPS5Formulario.html",{"form":form})
-
-def busquedaJuegosPS5(request):
-    return render(request,"AppJuegos/busquedaJuegosPS5.html")
-
-def buscarPS5(request):
-    
-    if request.GET["nombre"]:
-        
-        juego = request.GET["nombre"]
-        juegosPS4 = JuegosPS5.objects.filter(nombre__icontains=juego)
-        
-        return render(request,"AppJuegos/resultadosBusquedaJuegosPS5.html",{"juegos":juegosPS4,"nombre":juego})
-        
-    else:
-        
-       respuesta = "No enviaste datos"
-    
-    return HttpResponse(respuesta)
 
 def actualizarJuegosPS5Formulario(request, juegoNombre):
     juegoElegido = JuegosPS5.objects.get(nombre=juegoNombre)
@@ -312,6 +287,27 @@ def eliminarJuegoPS5(request, juegoNombre):
     contexto= {"juegos":juegos}
     
     return render(request,"AppJuegos/verJuegosPS5.html",contexto)
+
+#Buscar juegos de PS5 por nombre
+
+def busquedaJuegosPS5(request):
+    return render(request,"AppJuegos/busquedaJuegosPS5.html")
+
+def buscarPS5(request):
+    
+    if request.GET["nombre"]:
+        
+        juego = request.GET["nombre"]
+        juegosPS4 = JuegosPS5.objects.filter(nombre__icontains=juego)
+        
+        return render(request,"AppJuegos/resultadosBusquedaJuegosPS5.html",{"juegos":juegosPS4,"nombre":juego})
+        
+    else:
+        
+       respuesta = "No enviaste datos"
+    
+    return HttpResponse(respuesta)
+
 
 # agregar y ver los estudios
 
