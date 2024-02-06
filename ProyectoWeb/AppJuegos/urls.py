@@ -27,8 +27,6 @@ urlpatterns = [
     
     path("verJuegosPS4",verJuegosPS4, name="verJuegosPS4"),
     
-    path("agregarJuegosPS4",agregarJuegoPS4, name="agregarJuegosPS4"),
-    
     #agregar Juegos con formularios 
     
     path("juegosPS4Formulario",juegosPS4Formulario, name="juegosPS4Formulario"),
