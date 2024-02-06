@@ -37,9 +37,11 @@
                     <a href="{% url 'actualizarEstudio' x.id %}" > Actualizar </a>
                 </button>
 
+                {% if user.is_authenticated and user.is_staff %}
                 <button>
-                    <a href="{% url 'eliminarEstudio' x.id %}" > Eliminar </a>
+                    <a href="{% url 'eliminarEstudio' x.id %}">Eliminar</a>
                 </button>
+                {% endif %}
 
             </div>
 
