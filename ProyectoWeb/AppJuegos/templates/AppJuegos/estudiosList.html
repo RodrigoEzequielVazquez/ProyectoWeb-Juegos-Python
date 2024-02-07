@@ -13,7 +13,7 @@
     {%load static%}
 
     {% block titulo %}
-    Aca se ven los estudios de desarrollo de videojuegos
+    Estas viendo los estudios de desarrollo de videojuegos
     {%endblock%}
 
     {% block agregar %}
@@ -33,22 +33,25 @@
         <div class="contendores">
             {% for x in object_list %}
 
-            <div class="cards">
+            <div class="cards" id="cardsEstudios">
                 <p>{{x.nombre}}</p>
-                <p>{{x.lanzamientosFamosos}}</p>
+                <p>Lanzamientos famosos: {{x.lanzamientosFamosos}}</p>
 
-                {% if user.is_authenticated %}
-                <button>
-                    <a href="{% url 'actualizarEstudio' x.id %}" > Actualizar </a>
-                </button>
-                {% endif %}
+                <div class="contendorBtns">
 
-                {% if user.is_authenticated and user.is_staff %}
-                <button>
-                    <a href="{% url 'eliminarEstudio' x.id %}">Eliminar</a>
-                </button>
-                {% endif %}
+                    {% if user.is_authenticated %}
+                    <button>
+                        <a href="{% url 'actualizarEstudio' x.id %}"> Actualizar </a>
+                    </button>
+                    {% endif %}
 
+                    {% if user.is_authenticated and user.is_staff %}
+                    <button id="btnEliminar">
+                        <a href="{% url 'eliminarEstudio' x.id %}">Eliminar</a>
+                    </button>
+                    {% endif %}
+
+                </div>
 
             </div>
 

@@ -25,21 +25,24 @@
 
                 {% with first_image=user.avatarimagen_set.last %}
                 {% if first_image %}
-                    <a href="{{first_image.imagen.url}}" target="_blank"></a>
-                    <a href="{% url 'agregarAvatar' %}"><img src="{{first_image.imagen.url}}" alt="avatar" id="avatar"></a>
+                <a href="{{first_image.imagen.url}}" target="_blank"></a>
+                <a href="{% url 'agregarAvatar' %}"><img src="{{first_image.imagen.url}}" alt="avatar" id="avatar"></a>
 
                 {% else %}
 
-                    <a href="{% url 'agregarAvatar' %}" title="agregar avatar"><img src="{% static '/AppJuegos/assets/img/sinAvatar2.png' %}" alt="sin avatar" id="sinAvatar"></a>
-                
-               
+                <a href="{% url 'agregarAvatar' %}" title="agregar avatar"><img
+                        src="{% static '/AppJuegos/assets/img/sinAvatar2.png' %}" alt="sin avatar" id="sinAvatar"></a>
+
+
                 {% endif %}
                 {% endwith %}
 
                 <p>{{user.username}}</p>
 
-                <a href="{% url 'editarPerfil' %}" title="editar perfil"><img src="{% static '/AppJuegos/assets/img/editar2.png' %}" alt="editar perfil" id="editarPerfil"></a>
-             
+                <a href="{% url 'editarPerfil' %}" title="editar perfil"><img
+                        src="{% static '/AppJuegos/assets/img/editar2.png' %}" alt="editar perfil"
+                        id="editarPerfil"></a>
+
 
             </div>
 
@@ -56,13 +59,31 @@
     </nav>
 
 
-    <h1 class="mb-5">{% block titulo %}{%endblock%}</h1>
-    {% block agregar %}{%endblock%}
+    <header class="tituloPrincipal">
+
+        <h1 class="mb-5">{% block titulo %}{%endblock%}</h1>
+        <div>
+
+            {% block agregar %}{%endblock%}
+
+        </div>
+
+    </header>
 
 
     {% block contenidoQueCambia %}
     {%endblock%}
-    </header>
+
+
+    <footer>
+        <a href="https://github.com/RodrigoEzequielVazquez" target="_blank"><img src="{% static '/AppJuegos/assets/img/git-hub2.png' %}" alt="github"></a>
+        
+        <p>
+            Gracias por ver!
+        </p>
+        
+    </footer>
+
 
 </body>
 

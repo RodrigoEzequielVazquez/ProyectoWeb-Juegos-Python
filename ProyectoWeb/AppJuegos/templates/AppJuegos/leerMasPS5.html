@@ -10,32 +10,47 @@
 <body>
 
     {%extends "AppJuegos/padre.html"%}
+
     {%load static%}
 
     {% block titulo %}
-    Editar el juego
+
+    {% if juego %}
+
+    Estas viendo la info de {{juego.nombre}}
+
+    {% endif %}
+
     {%endblock%}
 
     {%block contenidoQueCambia %}
 
-    <section class="contenedorCambiante">
-
-        <p>Estamos buscando el juego: {{nombre}} de PS5</p>
+    <section class="contenedorCambiante" id="contenedorMas">
 
         {% if juego %}
 
-        <ul>
+        <div class="cardMas">
 
-            <li> {{juego.nombre}}</li>
-            <li> {{juego.genero}}</li>
-            <li> {{juego.año}}</li>
-            <li> {{juego.descripcion}}</li>
-            <li>
+            <div class="titulo">
+
                 <img id="imgJuegos" src="{{juego.imagen.url}}" alt="">
-            </li>
-            <li> {{juego.fecha}}</li>
 
-        </ul>
+                <p> {{juego.nombre}}</p>
+
+            </div>
+
+            <div class="descripcion">
+
+                <p> Género: {{juego.genero}}</p>
+                <p> Año: {{juego.año}}</p>
+                <p> Descripción:{{juego.descripcion}}</p>
+
+
+            </div>
+
+            <p class="fechaPost"> Fecha del post: {{juego.fecha}}</p>
+
+        </div>
 
         {% endif %}
 

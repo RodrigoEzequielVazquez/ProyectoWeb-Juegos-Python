@@ -12,14 +12,14 @@
     {%load static%}
 
     {% block titulo %}
-    Agrega tu avatar
+    Agrega un avatar
     {%endblock%}
 
     {%block contenidoQueCambia %}
 
     <section class="contenedorCambiante">
 
-        <h1>Subi tu nuevo avatar</h1>
+        <h1>Elegi la imagen</h1>
 
         {% if form.errors %}
     
@@ -36,7 +36,7 @@
                 
             </table>
     
-            <input type="submit" value="Subir imagen" name="" id="">
+            <input type="submit" value="Subir imagen" name="" id="" class="inputsForms">
         </form>
 
     </section>

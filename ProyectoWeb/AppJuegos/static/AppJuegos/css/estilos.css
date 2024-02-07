@@ -10,6 +10,83 @@ a{
     color: black;
 }
 
+button{
+
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+h1{
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 1rem 0rem;
+}
+
+#btnEliminar{
+
+    background-color: red;
+
+}
+
+table{
+    border: 1px solid gray;
+    padding: 1rem;
+
+}
+
+tbody{
+    display: flex;
+    flex-direction: column;
+}
+
+th{
+    width: 15rem;
+    text-align: start;
+}
+
+td{
+    width: 20rem;
+}
+
+td input{
+    width: 100%;
+}
+
+.formEstudio{
+    padding: 1rem;
+    border: 1px solid gray;
+}
+
+.formEstudio p{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    
+}
+
+.inputsForms{
+    margin-top: 1rem; 
+}
+
+.tituloPrincipal{
+    background-color: gainsboro;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.tituloPrincipal div{
+    text-align: center;
+}
+
+/* menu */
 .menuPrincipal{
     height: 8rem;
     background-color: rgb(144, 144, 144);
@@ -50,10 +127,37 @@ a{
 
 }
 
+#contenedorInicio{
+    gap: 1rem;
+    margin: 1rem;
+
+}
+
+footer{
+    height: 10rem;
+    background-color: rgb(144, 144, 144);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer a img{
+    height: 4rem;
+   
+}
+
+/* generales a contendores repetidos */
+
+body{
+    height: 100vh;
+}
+
 body .contenedorCambiante{
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 60%;
 }
   
 body .contenedorCambiante .contendores{
@@ -62,9 +166,16 @@ body .contenedorCambiante .contendores{
     justify-content: center;
     
 }
+
+/* vistas de estudios y juegos */
+
+#cardsEstudios{
+    height: 15rem;
+}
   
 body .contenedorCambiante .contendores .cards{
     width: 16rem;
+    height: 22rem;
     margin: 1rem;
     padding: 1rem 0;
     border: 1px solid black;
@@ -74,11 +185,89 @@ body .contenedorCambiante .contendores .cards{
     justify-content: center;
     background-color: whitesmoke;
     font-weight: bolder;
+    gap: 1rem;
+    
+}
+
+body .contenedorCambiante .contendores p{
+
+    font-size: 1.3rem;
+    border-bottom: 1px solid red;
+    text-align: center;
     
 }
 
 body .contenedorCambiante .contendores .cards img{
-    width: 2rem;
-    height: 2rem;
+    width: 70%;
+    height: 90%;
+    border: 1px solid red;
+    padding: 0.2rem;
     
+}
+
+/* vista sobre mi */
+
+#contendorAbout{
+    justify-content: center;
+}
+
+
+#contendorAbout p{
+    margin-top: 1rem;
+    width: 80%;
+    text-align: justify;
+}
+
+/* estilos de ver mas en los juegos */
+
+#contenedorMas{
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.cardMas{
+
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    border: 1px solid gold;
+}
+
+.cardMas .titulo{
+
+    width: 30%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.cardMas .titulo p{
+
+   font-size: 1.3rem
+    
+}
+
+.cardMas .titulo img{
+    width: 60%;
+    height: 80%;
+
+}
+
+.cardMas .descripcion{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cardMas .fechaPost{
+    width: 30%;
+    padding-top: 1rem;
+
 }

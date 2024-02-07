@@ -13,7 +13,7 @@
     {%load static%}
 
     {% block titulo %}
-    Aca se ven los juegos de PS5
+    Estas viendo los juegos de PS5
     {%endblock%}
 
     {% block agregar %}
@@ -35,28 +35,30 @@
 
             <div class="cards">
                 <p>{{x.nombre}}</p>
-                <p>{{x.genero}}</p>
-                <p>{{x.descripcion}}</p>
-                <p>{{x.año}}</p>
                 <img id="imgJuegos" src="{{x.imagen.url}}" alt="">
-                <p>{{x.fecha}}</p>
+            
 
-                {% if user.is_authenticated and user.is_staff %}
-                <button>
-                    <a href="{% url 'eliminarJuegoPS5' x.id %}">Eliminar</a>
-                </button>
-                {% endif %}
-              
-                {% if user.is_authenticated %}
-                <button>
-                    <a href="{% url 'actualizarJuegosPS5Formulario' x.id %}" > Editar </a>
-                </button>
-                {% endif %}
+                <div class="contenedorBtns">
 
-                <button>
-                    <a href="{% url 'leerMasPS5' x.id %}"> Ver </a>
-                </button>
+                    {% if user.is_authenticated and user.is_staff %}
+                    <button id="btnEliminar">
+                        <a href="{% url 'eliminarJuegoPS5' x.id %}">Eliminar</a>
+                    </button>
+                    {% endif %}
+                  
+                    {% if user.is_authenticated %}
+                    <button >
+                        <a href="{% url 'actualizarJuegosPS5Formulario' x.id %}" > Editar </a>
+                    </button>
+                    {% endif %}
     
+                    <button >
+                        <a href="{% url 'leerMasPS5' x.id %}"> Ver </a>
+                    </button>
+        
+
+                </div>
+               
             </div>
 
             {% endfor %}

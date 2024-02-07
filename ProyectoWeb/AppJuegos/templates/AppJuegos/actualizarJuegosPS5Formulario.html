@@ -11,14 +11,14 @@
     {%load static%}
 
     {% block titulo %}
-    Editar el juego
+    Edita el juego
     {%endblock%}
 
     {%block contenidoQueCambia %}
 
     <section class="contenedorCambiante">
 
-        <h1>Ingresa los datos para agregar editar tu usario</h1>
+        <h1>Ingresa los datos a editar</h1>
 
         {% if form.errors %}
     
@@ -33,7 +33,7 @@
                 {{ form.as_table }}
             </table>
         
-            <input type="submit" value="Actualizar">
+            <input type="submit" value="Actualizar" class="inputsForms">
         </form>
 
     </section>

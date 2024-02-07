@@ -5,8 +5,6 @@
 
 {% if user.is_authenticated %}
 Bienvenido {{user}}, espero que disfrutes navegando en la página!
-{{ juegos_ps4 }}
-{{ juegos_ps5 }}
 
 {% else %}
 Bienvenido, inicia sesión para poder agregar o editar un juego o estudio!
@@ -16,35 +14,82 @@ Bienvenido, inicia sesión para poder agregar o editar un juego o estudio!
 
 {%block contenidoQueCambia %}
 
-<section>
+
+<section class="contenedorCambiante" id="contenedorInicio">
+
+    <!-- ultimo juego ps4 -->
 
     {% if contexto.ultimo_juego_ps4 %}
-    <h2>Último juego de PS4:</h2>
-    <p>Nombre: {{ contexto.ultimo_juego_ps4.nombre }}</p>
-    <p>Género: {{ contexto.ultimo_juego_ps4.genero }}</p>
-    <p>Descripción: {{ contexto.ultimo_juego_ps4.descripcion }}</p>
-    <p>Año: {{ contexto.ultimo_juego_ps4.año }}</p>
-    {% if contexto.ultimo_juego_ps4.imagen %}
-        <img src="{{ contexto.ultimo_juego_ps4.imagen.url }}" alt="Imagen del juego">
-    {% endif %}
-    <p>Fecha: {{ contexto.ultimo_juego_ps4.fecha }}</p>
-{% else %}
-    <p>No hay juegos de PS4 disponibles.</p>
-{% endif %}
 
-{% if contexto.ultimo_juego_ps5 %}
-    <h2>Último juego de PS5:</h2>
-    <p>Nombre: {{ contexto.ultimo_juego_ps5.nombre }}</p>
-    <p>Género: {{ contexto.ultimo_juego_ps5.genero }}</p>
-    <p>Descripción: {{ contexto.ultimo_juego_ps5.descripcion }}</p>
-    <p>Año: {{ contexto.ultimo_juego_ps5.año }}</p>
-    {% if contexto.ultimo_juego_ps5.imagen %}
-        <img src="{{ contexto.ultimo_juego_ps5.imagen.url }}" alt="Imagen del juego">
+    <h2>Último juego de PS4:</h2>
+
+    <div class="cardMas">
+
+        <div class="titulo">
+
+            <p>{{ contexto.ultimo_juego_ps4.nombre }}</p>
+
+            {% if contexto.ultimo_juego_ps4.imagen %}
+            <img src="{{ contexto.ultimo_juego_ps4.imagen.url }}" alt="Imagen del juego">
+            {% endif %}
+
+        </div>
+
+        <div class="descripcion">
+
+            <p>Género: {{ contexto.ultimo_juego_ps4.genero }}</p>
+            <p>Año: {{ contexto.ultimo_juego_ps4.año }}</p>
+            <p>Descripción: {{ contexto.ultimo_juego_ps4.descripcion }}</p>
+
+
+        </div>
+
+        <p class="fechaPost"> Fecha del post: {{ contexto.ultimo_juego_ps4.fecha }}</p>
+
+    </div>
+
+    {% else %}
+
+    <p>No hay juegos de PS4 disponibles.</p>
+
     {% endif %}
-    <p>Fecha: {{ contexto.ultimo_juego_ps5.fecha }}</p>
-{% else %}
+
+    <!-- Ultimo juego ps5 -->
+
+    {% if contexto.ultimo_juego_ps5 %}
+
+    <h2>Último juego de PS5:</h2>
+
+    <div class="cardMas">
+
+        <div class="titulo">
+
+            <p>{{ contexto.ultimo_juego_ps5.nombre }}</p>
+
+            {% if contexto.ultimo_juego_ps5.imagen %}
+            <img src="{{ contexto.ultimo_juego_ps5.imagen.url }}" alt="Imagen del juego">
+            {% endif %}
+
+        </div>
+
+        <div class="descripcion">
+
+            <p>Género: {{ contexto.ultimo_juego_ps5.genero }}</p>
+            <p>Año: {{ contexto.ultimo_juego_ps5.año }}</p>
+            <p>Descripción: {{ contexto.ultimo_juego_ps5.descripcion }}</p>
+
+
+        </div>
+
+        <p class="fechaPost"> Fecha del post: {{ contexto.ultimo_juego_ps5.fecha }}</p>
+
+    </div>
+
+    {% else %}
+
     <p>No hay juegos de PS5 disponibles.</p>
-{% endif %}
+
+    {% endif %}
 
 </section>
 

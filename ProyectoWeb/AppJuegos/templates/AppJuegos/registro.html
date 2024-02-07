@@ -30,9 +30,9 @@
         
             {% csrf_token %}
     
-                {{form}}
+                {{form.as_p}}
     
-            <button type="submit"> Registrate !</button>
+            <button type="submit" class="inputsForms"> Registrarse </button>
     
         </form>
     

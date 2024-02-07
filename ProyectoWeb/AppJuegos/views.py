@@ -132,7 +132,7 @@ def agregarAvatar(request):
             avatar = form.save(commit=False)
             avatar.usuario = request.user  # Asigna directamente el usuario actual
             avatar.save()
-            return render(request,"AppJuegos/inicio.html")  # Redirige a la página de inicio
+            return redirect("/")
     else:
         form = AvatarFormulario()
         # Excluimos el campo de usuario del formulario
